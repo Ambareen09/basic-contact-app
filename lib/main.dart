@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(ContactProfilePage());
-
-enum APP_THEME { LIGHT, DARK }
+void main() => runApp(const ContactProfilePage());
 
 class MyAppThemes {
   static ThemeData appThemeLight() {
@@ -34,26 +32,20 @@ class MyAppThemes {
         ),
       ),
       iconTheme: const IconThemeData(
-        color: Colors.blue,
+        color: Colors.orange,
       ),
     );
   }
 }
 
-class ContactProfilePage extends StatefulWidget {
-  @override
-  _ContactProfilePageState createState() => _ContactProfilePageState();
-}
+class ContactProfilePage extends StatelessWidget {
+  const ContactProfilePage({Key? key}) : super(key: key);
 
-class _ContactProfilePageState extends State<ContactProfilePage> {
-  var currentTheme = APP_THEME.LIGHT;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: currentTheme == APP_THEME.DARK
-          ? MyAppThemes.appThemeDark()
-          : MyAppThemes.appThemeLight(),
+      theme: MyAppThemes.appThemeLight(),
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.purple,
@@ -132,12 +124,6 @@ class _ContactProfilePageState extends State<ContactProfilePage> {
               ],
             ),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: IconButton(
-            icon: Icon(Icons.threesixty),
-            onPressed: () {},
-          ),
         ),
       ),
     );
